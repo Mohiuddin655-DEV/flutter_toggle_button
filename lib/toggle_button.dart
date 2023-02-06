@@ -61,12 +61,12 @@ class _ToggleButtonState extends State<ToggleButton> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final color = widget.enabled
+    final color = widget.enabled && widget.onClick != null
         ? isSelected
             ? theme.primaryColor
             : Colors.white
         : Colors.grey.shade400;
-    final background = widget.enabled
+    final background = widget.enabled && widget.onClick != null
         ? isSelected
             ? theme.primaryColor.withOpacity(0.1)
             : theme.primaryColor
@@ -79,7 +79,7 @@ class _ToggleButtonState extends State<ToggleButton> {
         clipBehavior: Clip.antiAlias,
         borderRadius: BorderRadius.circular(widget.borderRadius),
         child: InkWell(
-          onTap: widget.enabled
+          onTap: widget.enabled && widget.onClick != null
               ? () => setState(() {
                     widget.onClick?.call(isSelected);
                     isSelected = !isSelected;
@@ -147,12 +147,14 @@ class _ToggleButtonState extends State<ToggleButton> {
   }
 
   ButtonState get state {
-    if (!widget.enabled) {
-      return ButtonState.disable;
-    } else if (isSelected) {
-      return ButtonState.selected;
+    if (widget.enabled && widget.onClick != null) {
+      if (isSelected) {
+        return ButtonState.selected;
+      } else {
+        return ButtonState.none;
+      }
     } else {
-      return ButtonState.none;
+      return ButtonState.disable;
     }
   }
 }

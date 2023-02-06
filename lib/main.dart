@@ -37,30 +37,40 @@ class Home extends StatelessWidget {
             //Default
             ToggleButton(
               margin: const EdgeInsets.all(12),
-              text: "Defalut",
+              text: "Default",
               onClick: (selected) {
                 print(selected);
               },
             ),
             ToggleButton(
               margin: const EdgeInsets.all(12),
-              text: "Defalut",
+              text: "Default",
               selected: true,
               onClick: (selected) {
                 print(selected);
               },
             ),
-            ToggleButton(
-              margin: const EdgeInsets.all(12),
-              text: "Defalut",
-              enabled: false,
-              onClick: (selected) {
-                print(selected);
-              },
+            const ToggleButton(
+              margin: EdgeInsets.all(12),
+              text: "Default",
             ),
             //ExpendedIcon
             ToggleButton(
               margin: const EdgeInsets.all(12),
+              width: 200,
+              borderRadius: 25,
+              expended: true,
+              iconPadding: const EdgeInsets.only(left: 16),
+              iconState: (state) {
+                switch (state) {
+                  case ButtonState.selected:
+                    return Icons.near_me_outlined;
+                  case ButtonState.disable:
+                    return Icons.near_me_disabled;
+                  case ButtonState.none:
+                    return Icons.near_me;
+                }
+              },
               textState: (state) {
                 switch (state) {
                   case ButtonState.selected:
@@ -91,25 +101,27 @@ class Home extends StatelessWidget {
                     return Colors.amber;
                 }
               },
-              width: 200,
-              enabled: true,
-              expended: true,
-              icon: Icons.near_me,
-              iconPadding: const EdgeInsets.only(left: 16),
-              borderRadius: 25,
-              onClick: (selected) {
-                print(selected);
+              onClick: (value) {
+                print(value);
               },
             ),
             ToggleButton(
+              margin: const EdgeInsets.all(12),
               width: 200,
-              enabled: true,
+              borderRadius: 25,
               expended: true,
               selected: true,
-              icon: Icons.nearby_off,
               iconPadding: const EdgeInsets.only(left: 16),
-              borderRadius: 25,
-              margin: const EdgeInsets.all(12),
+              iconState: (state) {
+                switch (state) {
+                  case ButtonState.selected:
+                    return Icons.near_me_outlined;
+                  case ButtonState.disable:
+                    return Icons.near_me_disabled;
+                  case ButtonState.none:
+                    return Icons.near_me;
+                }
+              },
               textState: (state) {
                 switch (state) {
                   case ButtonState.selected:
@@ -140,18 +152,26 @@ class Home extends StatelessWidget {
                     return Colors.amber;
                 }
               },
-              onClick: (selected) {
-                print(selected);
+              onClick: (value) {
+                print(value);
               },
             ),
             ToggleButton(
               margin: const EdgeInsets.all(12),
               width: 200,
-              enabled: false,
-              expended: true,
-              icon: Icons.nearby_error,
-              iconPadding: const EdgeInsets.only(left: 16),
               borderRadius: 25,
+              expended: true,
+              iconPadding: const EdgeInsets.only(left: 16),
+              iconState: (state) {
+                switch (state) {
+                  case ButtonState.selected:
+                    return Icons.near_me_outlined;
+                  case ButtonState.disable:
+                    return Icons.near_me_disabled;
+                  case ButtonState.none:
+                    return Icons.near_me;
+                }
+              },
               textState: (state) {
                 switch (state) {
                   case ButtonState.selected:
@@ -181,9 +201,6 @@ class Home extends StatelessWidget {
                   case ButtonState.none:
                     return Colors.amber;
                 }
-              },
-              onClick: (selected) {
-                print(selected);
               },
             ),
             //WithoutExpendedIcon
@@ -193,24 +210,19 @@ class Home extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ToggleButton(
-                    margin: const EdgeInsets.all(12),
-                    enabled: true,
                     borderRadius: 50,
-                    onClick: (selected) {
-                      print(selected);
-                    },
+                    margin: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     iconState: (state) {
                       switch (state) {
                         case ButtonState.selected:
                           return Icons.near_me_outlined;
                         case ButtonState.disable:
                           return Icons.near_me_disabled;
-                          break;
                         case ButtonState.none:
                           return Icons.near_me;
                       }
                     },
-                    padding: const EdgeInsets.all(12),
                     colorState: (state) {
                       switch (state) {
                         case ButtonState.selected:
@@ -231,27 +243,25 @@ class Home extends StatelessWidget {
                           return Colors.amber;
                       }
                     },
+                    onClick: (selected) {
+                      print(selected);
+                    },
                   ),
                   ToggleButton(
-                    margin: const EdgeInsets.all(12),
-                    enabled: true,
+                    borderRadius: 50,
                     selected: true,
-                    borderRadius: 50,
-                    onClick: (selected) {
-                      print(selected);
-                    },
+                    margin: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     iconState: (state) {
                       switch (state) {
                         case ButtonState.selected:
                           return Icons.near_me_outlined;
                         case ButtonState.disable:
                           return Icons.near_me_disabled;
-                          break;
                         case ButtonState.none:
                           return Icons.near_me;
                       }
                     },
-                    padding: const EdgeInsets.all(12),
                     colorState: (state) {
                       switch (state) {
                         case ButtonState.selected:
@@ -272,26 +282,24 @@ class Home extends StatelessWidget {
                           return Colors.amber;
                       }
                     },
-                  ),
-                  ToggleButton(
-                    margin: const EdgeInsets.all(12),
-                    enabled: false,
-                    borderRadius: 50,
                     onClick: (selected) {
                       print(selected);
                     },
+                  ),
+                  ToggleButton(
+                    borderRadius: 50,
+                    margin: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     iconState: (state) {
                       switch (state) {
                         case ButtonState.selected:
                           return Icons.near_me_outlined;
                         case ButtonState.disable:
                           return Icons.near_me_disabled;
-                          break;
                         case ButtonState.none:
                           return Icons.near_me;
                       }
                     },
-                    padding: const EdgeInsets.all(12),
                     colorState: (state) {
                       switch (state) {
                         case ButtonState.selected:
@@ -319,11 +327,19 @@ class Home extends StatelessWidget {
             ToggleButton(
               margin: const EdgeInsets.all(12),
               width: 200,
-              enabled: true,
-              icon: Icons.nearby_off,
+              borderRadius: 25,
               iconPadding: const EdgeInsets.only(right: 16),
               iconAlignment: IconAlignment.start,
-              borderRadius: 25,
+              iconState: (state) {
+                switch (state) {
+                  case ButtonState.selected:
+                    return Icons.near_me_outlined;
+                  case ButtonState.disable:
+                    return Icons.near_me_disabled;
+                  case ButtonState.none:
+                    return Icons.near_me;
+                }
+              },
               textState: (state) {
                 switch (state) {
                   case ButtonState.selected:
@@ -354,19 +370,27 @@ class Home extends StatelessWidget {
                     return Colors.amber;
                 }
               },
-              onClick: (selected) {
-                print(selected);
+              onClick: (value) {
+                print(value);
               },
             ),
             ToggleButton(
-              margin: const EdgeInsets.all(12),
               width: 200,
-              enabled: true,
+              borderRadius: 25,
               selected: true,
-              icon: Icons.nearby_off,
               iconPadding: const EdgeInsets.only(right: 16),
+              margin: const EdgeInsets.all(12),
               iconAlignment: IconAlignment.start,
-              borderRadius: 25,
+              iconState: (state) {
+                switch (state) {
+                  case ButtonState.selected:
+                    return Icons.near_me_outlined;
+                  case ButtonState.disable:
+                    return Icons.near_me_disabled;
+                  case ButtonState.none:
+                    return Icons.near_me;
+                }
+              },
               textState: (state) {
                 switch (state) {
                   case ButtonState.selected:
@@ -397,18 +421,26 @@ class Home extends StatelessWidget {
                     return Colors.amber;
                 }
               },
-              onClick: (selected) {
-                print(selected);
+              onClick: (value) {
+                print(value);
               },
             ),
             ToggleButton(
-              margin: const EdgeInsets.all(12),
               width: 200,
-              enabled: false,
-              icon: Icons.nearby_error,
-              iconPadding: const EdgeInsets.only(right: 16),
-              iconAlignment: IconAlignment.start,
               borderRadius: 25,
+              iconPadding: const EdgeInsets.only(right: 16),
+              margin: const EdgeInsets.all(12),
+              iconAlignment: IconAlignment.start,
+              iconState: (state) {
+                switch (state) {
+                  case ButtonState.selected:
+                    return Icons.near_me_outlined;
+                  case ButtonState.disable:
+                    return Icons.near_me_disabled;
+                  case ButtonState.none:
+                    return Icons.near_me;
+                }
+              },
               textState: (state) {
                 switch (state) {
                   case ButtonState.selected:
@@ -438,9 +470,6 @@ class Home extends StatelessWidget {
                   case ButtonState.none:
                     return Colors.amber;
                 }
-              },
-              onClick: (selected) {
-                print(selected);
               },
             ),
           ],
